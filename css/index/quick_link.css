@@ -1,0 +1,17 @@
+.quick-link {
+    background: #1446a0;
+    padding-bottom: 10px;
+}
+
+.quick-btn {
+    background: white;
+    border: none;
+    transition: 0.3s ease-in-out;
+    padding: 10px 16px;
+    border-radius: 5px;
+}
+
+.quick-btn:hover,.quick-btn:active {
+    background: #008aff !important;
+    color: white;
+}

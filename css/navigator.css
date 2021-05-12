@@ -1,0 +1,188 @@
+/*.navbar-brand img {*/
+/*    height: 35px;*/
+/*}*/
+
+.navbar-brand {
+    margin-left: 20px;
+}
+
+.navbar-brand div{
+    font-size: 15px;
+    font-family: "STHeiti",serif;
+}
+
+.navbar {
+    background-color: #f2f2f2 !important;
+    position: sticky !important;
+    top: 0;
+    z-index: 100;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/*#logo {*/
+/*    height: 45px;*/
+/*    padding: 0 27px 0 58px;*/
+/*}*/
+
+
+.nav-link {
+    font-size: 20px;
+    line-height: 45px;
+    font-weight: 300;
+    color: black !important;
+    text-decoration: none;
+    width: 130px;
+}
+
+.nav-link:hover {
+    color: #008aff !important;
+}
+
+.active {
+    color: #008aff !important;
+    font-weight: 400;
+}
+
+.disabled {
+    color: rgba(0,0,0,.3) !important;
+}
+
+.navbar-toggler {
+    border-color: #000000 !important;
+    outline: none !important;
+}
+
+#nav-right-side {
+    width: fit-content;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#nav-right-side > li {
+    float: right;
+    z-index: 1;
+    height: 45px;
+    text-align: center;
+    display: flex;
+}
+
+#nav-login {
+    width: fit-content;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+#nav-login li {
+    float: right;
+    z-index: 1;
+    height: 45px;
+    text-align: center;
+    display: flex;
+}
+
+#nav-login-text {
+    padding-right: 66px;
+    font-size: 13px;
+    line-height: 45px;
+    display: block;
+    /*font-weight: 500;*/
+    color: #000000;
+    text-decoration: none;
+}
+
+#nav-login-text a {
+    transition: all 0s;
+    color: #000000;
+    text-decoration: none;
+}
+
+#nav-login-logo img {
+    height: 30px;
+    align-self: center;
+}
+
+/*#nav-login-logo {*/
+/*    padding-right: 16px;*/
+/*    height: 45px;*/
+/*}*/
+
+@media screen and (max-width: 991px) {
+
+    #nav-right-side,#nav-login {
+        width: 100%;
+    }
+
+    /*display vertical*/
+    #nav-right-side > li {
+        float: none;
+    }
+
+    /*-----登陆注册 按钮样式 BEGIN-----*/
+    #nav-login a {
+        font-size: 15px;
+        text-align: center;
+        font-weight: 300;
+        border: 1px solid #000000;
+        padding: 0 20px;
+        height: 35px;
+        line-height: 35px;
+        border-radius: 7px;
+        flex: 1;
+        transition: all 0.3s;
+    }
+
+    #nav-login a:hover {
+        border: 1px solid #008aff;
+        background: #008aff;
+        color: white;
+    }
+    /*-----登陆注册 按钮样式 END-----*/
+
+    #nav-login a:nth-child(1) {
+        margin-right: 16px;
+    }
+
+    /*隐藏用户icon*/
+    #nav-login li:nth-child(2) {
+        display: none;
+    }
+
+    /*let button fulfill in width*/
+    #nav-login-text {
+        padding-right: 0;
+        align-items: center;
+        width: 100%;
+        display: flex;
+        padding-bottom: 8px;
+    }
+
+    /*hide '/'*/
+    #nav-login-text span {
+        display: none;
+    }
+
+    /*center the links*/
+    .nav-link {
+        font-size: 15px;
+        line-height: 45px;
+        font-weight: 300;
+        color: #000000 !important;
+        text-decoration: none;
+        width: 100%;
+    }
+    .active {
+        color: #008aff !important;
+        font-weight: 400;
+    }
+    .disabled {
+        color: rgba(0,0,0,.3) !important;
+    }
+
+    /*#logo {*/
+    /*    padding: 0;*/
+    /*}*/
+}

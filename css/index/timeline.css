@@ -1,0 +1,16 @@
+.cd-timeline-img.cd-item {
+    background: #1446a0;
+}
+
+.cd-date {
+    font-size: 30px !important;
+    padding: 0 !important;
+}
+
+#cd-timeline::before {
+    background: #DDDDDD;
+}
+
+.cd-timeline-content {
+    box-shadow: 0 0 20px 0 rgba(82,63,105,.10);
+}

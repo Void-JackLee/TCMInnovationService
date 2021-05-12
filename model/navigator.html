@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/navigator.css">
+    <script>
+        function nav_toggle(idx) {
+            $('.navbar-nav li a').eq(idx).addClass('active');
+        }
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light">
+<!--    <a class="navbar-brand" href="index.html">-->
+<!--        <img id="logo" src="img/logo-sqj-text.png">-->
+<!--    </a>-->
+
+    <a class="navbar-brand" href="/">
+        <div><b>第三届全国中医药高等院校</b></div>
+        <div><b>大学生创新创业大赛服务网</b></div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link text-center" href="index.html">首页</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-center" href="event.html">大赛新闻</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-center" href="product.html">大赛通知</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-center" href="specialist.html">1+5系列活动</a>
+            </li>
+        </ul>
+
+        <ul id="nav-right-side">
+            <li>
+                <ul id="nav-login">
+                    <li id="nav-login-text">
+                        <a href="login.html?usr=normal">登录</a><span>&nbsp;|&nbsp;</span><a href="login.html?usr=manager">管理入口</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+</body>
+</html>

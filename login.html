@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>登录</title>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="lib/jquery/jquery-3.4.1.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background-image: url("img/login/loginbg.jpg");
+        }
+    </style>
+</head>
+<body>
+<div id="vContainer"></div>
+<div class="container">
+    <form class="form-signin">
+        <div class="card">
+            <div style="padding: 10px; padding-top: 20px;">
+                <h3 class="form-signin-heading">
+                    <img src="img/cicon/cicon_01.png" alt="">
+                    大赛登录
+                </h3>
+                <div class="input_style">
+                    <input type="text" id="user" class="form-control" placeholder="用户名">
+
+                    <span id="user_err" style="display: none;">
+                        <svg style="color: red;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                             fill="currentColor" class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <small id="user_err_content" style="font-weight: bold; color: red;">
+                            用户名没有填写
+                        </small>
+                    </span>
+                </div>
+
+                <div class="input_style">
+                    <input type="password" id="password" class="form-control" placeholder="密码">
+                    <!--如果遇到错误情况，input_err这个CSS会让input变红-->
+
+                    <span id="pswd_err" style="display: none;"><!--如果遇到错误情况，id=xxx_err的这个元素会出现，否则消失-->
+                        <svg style="color: red;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                             fill="currentColor" class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <small id="pswd_err_content" style="font-weight: bold; color: red;">
+                            密码没有填写
+                        </small>
+                    </span>
+                </div>
+
+                <div class="input_style">
+                    <button class="btn btn-lg btn-primary btn-block" id="confirm" type="button">登录</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    $(document).ready(function () {
+
+        $("#confirm").click(function () {
+            var v;
+
+            var user_input_obj = $("#user");
+            var pswd_input_obj = $("#password");
+
+            var user_err_prompt_obj = $("#user_err");
+            var pswd_err_prompt_obj = $("#pswd_err");
+
+            var user_err_prompt_content_obj = $("#user_err_content");
+            var pswd_err_prompt_content_obj = $("#pswd_err_content");
+
+            const NUM_OF_VERIFY = 4;
+            var i = 0;
+
+            // 事先清空原有的消息
+            user_err_prompt_content_obj.empty();
+            pswd_err_prompt_content_obj.empty();
+
+            // 前处理 表单验证（4个if，对应上面的常量NUM_OF_VERIFY）
+            if (user_input_obj.val() === "") {
+                user_err_prompt_obj.show();
+                user_err_prompt_content_obj.append("请输入您的用户名！");
+                user_input_obj.addClass("input_err");
+            } else i++;
+
+            if (pswd_input_obj.val() === "") {
+                pswd_err_prompt_obj.show();
+                pswd_err_prompt_content_obj.append("请输入您的密码！");
+                pswd_input_obj.addClass("input_err");
+            } else i++;
+
+            if (RegExp(/ /).exec(user_input_obj.val())
+                || RegExp(/</).exec(user_input_obj.val())
+                || RegExp(/>/).exec(user_input_obj.val())) {
+                user_err_prompt_obj.show();
+                user_err_prompt_content_obj.append("用户名包含非法字符！");
+                user_input_obj.addClass("input_err");
+            } else i++;
+
+            if (pswd_input_obj.val().length > 20) {
+                pswd_err_prompt_obj.show();
+                pswd_err_prompt_content_obj.append("密码过长！");
+                pswd_err_prompt_obj.addClass("err_input");
+            } else i++;
+
+            if (i === NUM_OF_VERIFY) {
+                user_input_obj.removeClass("input_err");
+                pswd_input_obj.removeClass("input_err");
+                user_err_prompt_obj.hide();
+                pswd_err_prompt_obj.hide();
+                v.validate();
+            }
+        });
+
+        vaptcha({
+            //配置参数
+            vid: VAPTCHA_ID, // 验证单元id
+            type: 'invisible', // 展现类型 隐藏式
+            scene: 0,
+            offline_server: '',
+            lang: "auto",
+            // https: "true",
+            container: '#vContainer', // vaptcha容器的id
+        }).then(function (vObj) {
+            v = vObj;
+            vObj.listen("pass", function () {
+
+                var auth = {
+                    "user": email_input_obj.val(), // 这儿到时候需要加入加密方法
+                    "password": password_input_obj.val(), // 这儿到时候需要加入加密方法
+
+                    "captcha_id": VAPTCHA_ID,
+                    "captcha_key": VAPTCHA_KEY, // 自己申请通过的key
+                    "captcha_scene": 0,
+                    "captcha_token": vObj.getToken(), // 用户验证完成后生成的token
+                };
+
+                $.ajax({
+                    url: "http://scottsmithweb.com:8888/act",
+                    type: "post",
+                    data: JSON.stringify(auth),
+                    contentType: "application/json",
+                    crossDomain: true,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+
+                    success: function (data) {
+                        x0p({
+                            title: '登录成功',
+                            text: 'Redirecting...',
+                            icon: 'ok',
+                            buttons: [],
+                            autoClose: 2000,
+                        });
+                        setTimeout(function () {
+                            window.open('index.html', '_self');
+                        }, 1500);
+                    },
+
+                    /**
+                     * 本函数只有在没有网络或者服务器错误时才开始执行
+                     * @param XMLHttpRequest: XHR对象，XMLHttpRequest.status就是http状态码
+                     * @return void
+                     */
+
+                    error: function (XMLHttpRequest) {
+                        x0p('服务器未正确响应', "服务器或网络连接出现问题，错误代码："
+                            + XMLHttpRequest.status + "，请检查网络连接或联系管理员！", 'error', false);
+                        vObj.reset();
+                    },
+                });
+            });
+
+            // 可以做一点什么，但感觉这个又有点鸡肋
+            vObj.listen("close", function () {
+                console.log("您已经关闭验证窗口。");
+            });
+        });
+    });
+</script>
+</html>

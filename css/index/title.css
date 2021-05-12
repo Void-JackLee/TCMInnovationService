@@ -1,0 +1,44 @@
+.index-title {
+    padding: 20px 0 20px 0;
+}
+
+.index-title hr {
+    width: 20px;
+    margin: 3px auto 10px auto;
+}
+
+.index-title h1 {
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 0;
+}
+
+.index-title span {
+    display: block;
+    text-align: center;
+    font-size: 11px;
+}
+
+.index-title-light hr {
+    border: 2px white solid;
+}
+
+.index-title-light h1 {
+    color: white;
+}
+
+.index-title span {
+    color: white;
+}
+
+.index-title-dark hr {
+    border: 2px black solid;
+}
+
+.index-title-dark h1 {
+    color: black;
+}
+
+.index-title-dark span {
+    color: black;
+}

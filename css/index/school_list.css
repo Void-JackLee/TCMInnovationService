@@ -1,0 +1,15 @@
+.school-list .card {
+    background: white !important;
+    border-radius: 10px !important;
+}
+
+.school_image_div_grid {
+    padding: 5px !important;
+    margin: 5px !important;
+    text-align: center;
+}
+
+.school_image_div_grid a {
+    margin: 15px !important;
+}
+

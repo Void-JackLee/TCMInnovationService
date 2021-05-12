@@ -1,0 +1,7 @@
+.carousel-item div {
+    padding-top: 38.5%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 300px;
+}

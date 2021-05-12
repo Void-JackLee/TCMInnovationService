@@ -1,0 +1,144 @@
+.card_each_surface_change {
+    padding: 0 !important;
+    background-color: white !important;
+}
+
+.about-camp .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: white;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 1040px) {
+    .row_div_each {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media screen and (min-width: 1041px) {
+    .row_div_each {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+}
+
+/* 重写.card */
+.card {
+    min-height: 400px !important;
+    height: 100%;
+    border-radius: 0 !important;
+}
+
+.card-header-s {
+    background-color: white !important;
+    border: 0 !important;
+}
+
+/* 每张card的标题style */
+.hd {
+    color: black;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.download_button_div {
+    padding: 5px !important;
+    text-align: center;
+}
+
+.download_button {
+    width: 150px !important;
+    height: 60px !important;
+    margin: 10px !important;
+}
+
+@media screen and (max-width: 767px) {
+    #c1 {
+        border: none !important;
+        border-top-style: solid !important;
+        border-bottom-style: solid !important;
+        border-color: #efefef !important;
+        border-width: thin !important;
+    }
+
+    #c2 {
+        border: none !important;
+        border-bottom-style: solid !important;
+        border-width: thin !important;
+        border-color: #efefef !important;
+    }
+
+    #c3 {
+        border: none !important;
+        border-bottom-style: solid !important;
+        border-width: thin !important;
+        border-color: #efefef !important;
+    }
+
+    #c4 {
+        border: none !important;
+        border-bottom-style: solid !important;
+        border-width: thin !important;
+        border-color: #efefef !important;
+    }
+
+    #c5 {
+        border: none !important;
+        border-bottom-style: solid !important;
+        border-width: thin !important;
+        border-color: #efefef !important;
+    }
+
+    #c6 {
+        border: none !important;
+        border-bottom-style: solid !important;
+        border-width: thin !important;
+        border-color: #efefef !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #c1 {
+        border: none !important;
+        border-right-style: solid !important;
+        border-bottom-style: solid !important;
+        border-width: thin !important;
+        border-color: #efefef !important;
+    }
+
+    #c2 {
+        border: none !important;
+        border-bottom-style: solid !important;
+        border-width: thin !important;
+        border-color: #efefef !important;
+    }
+
+    #c3 {
+        border: none !important;
+        border-right-style: solid !important;
+        border-width: thin !important;
+        border-color: #efefef !important;
+    }
+
+    #c4 {
+        border: none !important;
+        border-color: #efefef !important;
+    }
+
+    #c5 {
+        border: none !important;
+        border-right-style: solid !important;
+        border-top-style: solid !important;
+        border-width: thin !important;
+        border-color: #efefef !important;
+    }
+
+    #c6 {
+        border: none !important;
+        border-top-style: solid !important;
+        border-width: thin !important;
+        border-color: #efefef !important;
+    }
+}
