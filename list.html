@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <title></title>
+
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/list.css">
+
+  <script src="lib/jquery/jquery-3.4.1.min.js"></script>
+
+  <script src="js/util.js"></script>
+  <script src="js/list_type.js"></script>
+</head>
+<body>
+<div id="nav"><script>$("#nav").load('model/navigator.html',function(){nav_toggle(ntype)});</script></div>
+<main>
+  <div class="title-bar">
+    <h1>{{d_title}}</h1>
+  </div>
+  <div class="list-container">
+    <div class="list-title"><h6>列表</h6></div>
+    <div class="item" v-for="(it,i) in items">
+      <div class="it-time-box">
+        <span class="it-month">{{it.mon}}/</span><span class="it-day">{{it.day}}</span>
+      </div>
+      <div class="it-content">
+        <h3><a target="_blank" v-bind:href="'detail.html?type=' + type + '&id=' + it.id">{{it.title}}</a></h3>
+        <a target="_blank" class="btn btn-outline-success" v-bind:href="'detail.html?type=' + type + '&id=' + it.id">详情>></a>
+      </div>
+    </div>
+    <div style="text-align: center;margin-top: 10px">没有更多啦～</div>
+  </div>
+</main>
+<div id="footer"><script>$("#footer").load('model/footer.html');</script></div>
+
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="lib/vue.js"></script>
+<script src="lib/axios.min.js"></script>
+<script>
+
+  const data = [{
+    title: '关于"xxxx"的通知',
+    mon: '10',
+    day: '21',
+    id:'ae1212fab3c'
+  },{
+    title: '关于"xxxx"的通知2',
+    mon: '11',
+    day: '07',
+    id:'ae1212fab3c'
+  }]
+
+  const main = new Vue({
+    el: "main",
+    data: {
+      type: type,
+      d_title: d_title,
+      items: data
+    },method: {
+
+    }
+  });
+</script>
+</body>
+</html>

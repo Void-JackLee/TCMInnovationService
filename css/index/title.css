@@ -19,6 +19,28 @@
     font-size: 11px;
 }
 
+.index-title img {
+    width: 26px !important;
+    height: 26px !important;
+}
+
+.index-title .d {
+    margin: 0 auto;
+    margin-top: 15px;
+    border: none !important;
+    outline: none !important;
+    width: 150px;
+    height: 1px;
+}
+
+.index-title .d_grid {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+}
+
+/* light */
 .index-title-light hr {
     border: 2px white solid;
 }
@@ -27,10 +49,16 @@
     color: white;
 }
 
-.index-title span {
+.index-title-light span {
     color: white;
 }
 
+.index-title-light .d {
+    background-color: #ffffff;
+    position: relative;
+}
+
+/* dark */
 .index-title-dark hr {
     border: 2px black solid;
 }
@@ -42,3 +70,10 @@
 .index-title-dark span {
     color: black;
 }
+
+.index-title-dark .d {
+    background-color: #000000;
+}
+
+
+

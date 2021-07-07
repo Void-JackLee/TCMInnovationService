@@ -1,0 +1,47 @@
+.navbar {
+    background: #1446a0 !important;
+}
+
+.nav-link {
+    color: #DDDDDD !important;
+}
+
+.nav-link:hover {
+    color: white !important;
+}
+
+.active {
+    color: white !important;
+    font-weight: 400;
+}
+
+#nav-login-text a,#nav-login-text{
+    color: white !important;
+}
+
+.navbar-toggler {
+    border-color: #fff !important;
+}
+
+.navbar-brand {
+    color: #DDD;
+}
+
+.navbar-brand:hover {
+    color: #DDD;
+}
+
+@media screen and (max-width: 991px) {
+
+    /*-----登陆注册 按钮样式 BEGIN-----*/
+    #nav-login a {
+        border: 1px solid white;
+    }
+
+    #nav-login a:hover {
+        border: 1px solid #fff;
+        background: #fff;
+        color: #1446a0 !important;
+    }
+    /*-----登陆注册 按钮样式 END-----*/
+}

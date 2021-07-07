@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <title>文章详情</title>
+
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="lib/editormd/css/editormd.min.css">
+  <style>
+    #hid-md {
+      display: none;
+    }
+
+    body {
+      background-color: #EFEFEF;
+    }
+
+    #content {
+      background-color: white;
+      max-width: 1200px;
+      margin: 30px auto;
+      border-radius: 5px;
+      min-height: 700px;
+
+    }
+
+    .bar {
+      border-bottom: #efefef 1px solid;
+      display: flex;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      border: none !important;
+    }
+
+    .bar h1 {
+      border: none;
+      margin: 0;
+      padding-bottom: 5px;
+      flex: 1;
+      text-align: left;
+    }
+
+    .bar h1 span {
+      border-bottom: #008aff 4px solid;
+      padding-bottom: 5px;
+    }
+
+    .bar .time {
+      line-height: 42px;
+      text-align: center;
+    }
+
+    @media screen and (max-width: 1260px){
+      #content {
+        margin: 30px;
+        width: auto;
+      }
+    }
+
+  </style>
+</head>
+<body>
+<!--navigation-->
+<div id="nav"></div>
+
+
+<div id="content">
+  <div class="bar">
+    <h1><span>{{d_title}}</span></h1>
+    <span class="time">发布时间: 2021-06-10</span>
+  </div>
+
+  <div id="md-content">
+    <textarea id="hid-md"></textarea>
+  </div>
+</div>
+
+<div id="footer"></div>
+
+
+<link rel="stylesheet" href="css/nav-blue.css">
+
+<!--scripts-->
+
+<script src="lib/jquery/jquery-3.4.1.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+
+<script src="lib/editormd/lib/marked.min.js"></script>
+<script src="lib/editormd/lib/prettify.min.js"></script>
+<script src="lib/editormd/lib/raphael.min.js"></script>
+<script src="lib/editormd/lib/underscore.min.js"></script>
+<script src="lib/editormd/lib/sequence-diagram.min.js"></script>
+<script src="lib/editormd/lib/flowchart.min.js"></script>
+<script src="lib/editormd/lib/jquery.flowchart.min.js"></script>
+<script src="lib/editormd/editormd.min.js"></script>
+
+<script src="js/util.js"></script>
+<script src="js/list_type.js"></script>
+
+<script>$("#nav").load('model/navigator.html',function(){nav_toggle(ntype,true)});</script>
+<script>$("#footer").load('model/footer.html');</script>
+
+<script src="lib/vue.js"></script>
+<script src="lib/axios.min.js"></script>
+
+<script>
+
+  const main = new Vue({
+    el: "#content",
+    data: {
+      jq:$,
+      d_title: d_title
+    }
+  })
+
+
+  editormd.markdownToHTML('content',{
+    htmlDecode      : "style,script,iframe",
+    markdown        : '#111',
+    emoji           : true,
+    taskList        : true,
+    tex             : true,  // 默认不解析
+    flowChart       : true,  // 默认不解析
+    sequenceDiagram : true  // 默认不解析
+  })
+</script>
+</body>
+</html>

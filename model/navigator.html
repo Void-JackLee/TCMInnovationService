@@ -3,8 +3,11 @@
 <head>
     <link rel="stylesheet" href="css/navigator.css">
     <script>
-        function nav_toggle(idx) {
+        function nav_toggle(idx,t) {
             $('.navbar-nav li a').eq(idx).addClass('active');
+            if (t) {
+                $('nav').removeClass("navbar-light").addClass("navbar-dark")
+            }
         }
     </script>
 </head>
@@ -29,10 +32,10 @@
                 <a class="nav-link text-center" href="index.html">首页</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-center" href="event.html">大赛新闻</a>
+                <a class="nav-link text-center" href="list.html?type=news">大赛新闻</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-center" href="product.html">大赛通知</a>
+                <a class="nav-link text-center" href="list.html?type=notify">大赛通知</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-center" href="specialist.html">1+5系列活动</a>

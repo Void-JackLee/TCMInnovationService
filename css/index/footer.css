@@ -1,3 +1,15 @@
+/* 重写.card */
+.card {
+    min-height: 400px !important;
+    height: 100%;
+    border-radius: 0 !important;
+}
+
+.card-header-s {
+    background-color: white !important;
+    border: 0 !important;
+}
+
 .footer_surface2 {
     padding: 0 !important;
 }
@@ -21,3 +33,5 @@
     min-height: 100px !important;
     padding: 20px !important;
 }
+
+

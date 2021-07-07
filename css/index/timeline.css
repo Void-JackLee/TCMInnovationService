@@ -1,5 +1,9 @@
 .cd-timeline-img.cd-item {
-    background: #1446a0;
+    background: #481841;
+}
+
+.cd-timeline-content h2 {
+    color: #0082cd;
 }
 
 .cd-date {
@@ -7,10 +11,34 @@
     padding: 0 !important;
 }
 
+/*线的颜色*/
 #cd-timeline::before {
-    background: #DDDDDD;
+    /*background: #DDDDDD;*/
+    background: white;
 }
 
 .cd-timeline-content {
     box-shadow: 0 0 20px 0 rgba(82,63,105,.10);
 }
+
+.timeline {
+    /*background: white;*/
+    background: #1446a0;
+}
+
+.timeline .container {
+    padding-bottom: 48px;
+}
+
+@media only screen and (min-width: 1170px) {
+    .cd-date {
+        color: white;
+        opacity: 1 !important;
+        background: #0082cd;
+        width: 170px !important;
+        text-align: center !important;
+        padding: 10px 0 10px 0 !important;
+        top: -3px !important;
+    }
+}
+

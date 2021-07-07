@@ -1,6 +1,6 @@
-.school-list .card {
+.school-list {
     background: white !important;
-    border-radius: 10px !important;
+    /*border-radius: 10px !important;*/
 }
 
 .school_image_div_grid {
@@ -10,6 +10,9 @@
 }
 
 .school_image_div_grid a {
-    margin: 15px !important;
+    margin: 5px !important;
 }
 
+.school-list .hide {
+    visibility: hidden;
+}

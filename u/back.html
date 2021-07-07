@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>后台 - 全国中医药高等院校大学生创新创业大赛</title>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../lib/editormd/css/editormd.min.css">
+    <link rel="stylesheet" href="../css/back/dashboard.css">
+    <style>
+        .sub-btn-type {
+            width: 180px !important;
+        }
+
+        .navbar {
+            background: linear-gradient(90deg,#021048,#1e38a3);
+        }
+
+        .navbar .nav-link {
+            color: #EFEFEF !important;
+        }
+
+        td {
+            vertical-align: middle !important;
+        }
+
+        table + p {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+    </style>
+
+    <script src="../lib/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="../">管理后台</a>
+
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="/logout">登出</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="sidebar-sticky pt-3">
+                <ul class="nav flex-column">
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#dash-basic">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-home">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                            发布信息<!--<span class="sr-only">(current)</span>-->
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+
+
+            <!--基本信息-->
+            <div id="dash-basic">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">文章发布</h1>
+                </div>
+                <div id="md-editor"></div>
+                <div class="pt-3 pb-2">
+                    <div class="button-domain">
+                        <form class="needs-validation" novalidate="">
+                            <div style="display: flex">
+                                <div style="flex: 1">
+                                    <select class="custom-select d-block w-100" id="country" required="">
+                                        <option value="">选择板块</option>
+                                        <option>United States</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a valid country.
+                                    </div>
+                                </div>
+                                <div class="ml-3">
+                                    <button v-on:click="modifyContest" type="button" class="btn btn-outline-primary sub-btn-type">
+                                        提交
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>
+
+
+<script src="../lib/editormd/lib/marked.min.js"></script>
+<script src="../lib/editormd/lib/prettify.min.js"></script>
+<script src="../lib/editormd/lib/raphael.min.js"></script>
+<script src="../lib/editormd/lib/underscore.min.js"></script>
+<script src="../lib/editormd/lib/sequence-diagram.min.js"></script>
+<script src="../lib/editormd/lib/flowchart.min.js"></script>
+<script src="../lib/editormd/lib/jquery.flowchart.min.js"></script>
+<script src="../lib/editormd/editormd.min.js"></script>
+
+
+<script>
+
+    function initPasteDragImg(Editor) {
+        var doc = document.getElementById(Editor.id)
+        doc.addEventListener('paste', function (event) {
+            var items = (event.clipboardData || window.clipboardData).items;
+            var file = null;
+            if (items && items.length) {
+                // 搜索剪切板items
+                for (var i = 0; i < items.length; i++) {
+                    if (items[i].type.indexOf('image') !== -1) {
+                        file = items[i].getAsFile();
+                        break;
+                    }
+                }
+            } else {
+                console.log("当前浏览器不支持");
+                return;
+            }
+            if (!file) {
+                console.log("粘贴内容非图片");
+                return;
+            }
+            uploadImg(file, Editor);
+        });
+        var dashboard = document.getElementById(Editor.id)
+        dashboard.addEventListener("dragover", function (e) {
+            e.preventDefault()
+            e.stopPropagation()
+        })
+        dashboard.addEventListener("dragenter", function (e) {
+            e.preventDefault()
+            e.stopPropagation()
+        })
+        dashboard.addEventListener("drop", function (e) {
+            e.preventDefault()
+            e.stopPropagation()
+            var files = this.files || e.dataTransfer.files;
+            uploadImg(files[0], Editor);
+        })
+    }
+
+    function uploadImg(file, Editor) {
+        var formData = new FormData();
+        formData.append('file', file, file.name);
+        $.ajax({
+
+            "type": 'post',
+            "url": Editor.settings.imageUploadURL,//获取我们配置的url
+            "data": formData,
+            "processData": false,
+            "contentType": false,
+            crossDomain: true,
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function (data) {
+
+                var j = JSON.parse(data);
+
+                if (j["status"] === "success") Editor.insertValue("![图片](" + j["message"] + ")");
+                else toastr.error(j["message"]);
+            },
+            error: function (XMLHttpRequest) {
+                toastr.error("无法连接服务器，错误码：" + XMLHttpRequest.status + "，请检查网络连接或联系管理员！");
+            }
+        });
+    }
+
+    const PIC_URL = "127.0.0.1:8888"
+
+    editormd("md-editor", {
+        // placeholder: '请在此处键入Markdown...',  //默认显示的文字，这里就不解释了
+        markdown: '# 标题',
+        width: "100%",
+        height: 640,
+        syncScrolling: "single",
+        path: "../lib/editormd/lib/",   //你的path路径（原资源文件中lib包在我们项目中所放的位置）
+        theme: "default",//工具栏主题
+        previewTheme: "light",//预览主题
+        editorTheme: "default",//编辑主题
+        saveHTMLToTextarea: true,
+        htmlDecode: "style,script,iframe",  // you can filter tags decode
+        emoji: true,
+        taskList: true,
+        tocm: true,         // Using [TOCM]
+        tex: true,                   // 开启科学公式TeX语言支持，默认关闭
+        flowChart: true,             // 开启流程图支持，默认关闭
+        sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
+        toolbarIcons: function () {  //自定义工具栏，后面有详细介绍
+            return editormd.toolbarModes['full']; // full, simple, mini
+        },
+        imageUpload: true, //必须
+        imageFormats: ["jpg", "jpeg", "gif", "png", "bmp"],
+        imageUploadURL: PIC_URL + "/image_submit",
+        onload: function () {
+            initPasteDragImg(this);
+        }
+    });
+</script>
+</body>
+</html>
